@@ -17,8 +17,9 @@ export class ProductoService {
     this.url = GLOBAL.url;
    } 
 
-   get_productos(){
-    
+   get_productos(filtro:any): Observable<any>{
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this._http.get(this.url+'productos/'+filtro,{headers:headers}); 
    }
 
 

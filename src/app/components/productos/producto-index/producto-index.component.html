@@ -91,40 +91,21 @@
                             <table class="table table-striped table-hover">
                                 <thead class="thead-dark">
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Phone Number</th>
-                                        <th>Date of Birth</th>
+                                        <th>Producto</th>
+                                        <th>Cantidad</th>
+                                        <th>Precio Venta</th>
+                                        <th>Opciones</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
+                                <tbody *ngFor="let item of productos">
+                                    
                                         <td>
-                                            <img src="img/avatars/avatar-5.jpg" width="48" height="48" class="rounded-circle mr-2" alt="Avatar"> Michelle Bilodeau
+                                            <img [src]="url + 'producto/img/'+ item.imagen" width="48" height="48" class="rounded-circle mr-2" 
+                                            alt="Avatar"> {{item.titulo}}
                                         </td>
                                         <td>864-348-0485</td>
                                         <td>June 21, 1961</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img src="img/avatars/avatar-2.jpg" width="48" height="48" class="rounded-circle mr-2" alt="Avatar"> Alexander Groves
-                                        </td>
-                                        <td>914-939-2458</td>
-                                        <td>May 15, 1948</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img src="img/avatars/avatar-3.jpg" width="48" height="48" class="rounded-circle mr-2" alt="Avatar"> Kathie Burton
-                                        </td>
-                                        <td>704-993-5435</td>
-                                        <td>September 14, 1965</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img src="img/avatars/avatar-4.jpg" width="48" height="48" class="rounded-circle mr-2" alt="Avatar"> Daisy Seger
-                                        </td>
-                                        <td>765-382-8195</td>
-                                        <td>April 2, 1971</td>
-                                    </tr>
+                                    
                                 </tbody>
                             </table>
                         </div>

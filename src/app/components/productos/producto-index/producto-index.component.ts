@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductoService } from 'src/app/services/producto.service';
+import { GLOBAL } from 'src/app/services/global'
 
 @Component({
   selector: 'app-producto-index',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductoIndexComponent implements OnInit {
 
-  constructor() { }
+  public productos: any;
+  public url;
+  constructor(
+    private _productoService : ProductoService,
+  ) { 
+    this.url = GLOBAL.url;
+  }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this._productoService.get_productos('').subscribe(
+      response => {
+        this.productos = response.productos;
+        console.log(this.productos);
+      },
+      error => {
+
+      }
+    );
   }
 
 }
