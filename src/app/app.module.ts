@@ -11,6 +11,8 @@ import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProductoIndexComponent } from './components/productos/producto-index/producto-index.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { ProductoCreateComponent } from './components/productos/producto-create/producto-create.component';
 
 @NgModule({
   declarations: [
@@ -18,14 +20,16 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     LoginComponent,
     DashboardComponent,
     ProductoIndexComponent,
-    SidebarComponent
+    SidebarComponent,
+    ProductoCreateComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    routing
+    routing,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
