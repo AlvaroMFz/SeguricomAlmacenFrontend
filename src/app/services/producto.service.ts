@@ -49,6 +49,7 @@ export class ProductoService {
     fd.append('imagen', data.imagen);
     fd.append('precio_compra', data.precio_compra);
     fd.append('precio_venta', data.precio_venta);
+    fd.append('stock', data.stock);
     fd.append('idcategoria', data.idcategoria);
     fd.append('puntos', data.puntos);
 

@@ -13,6 +13,7 @@ import { ProductoIndexComponent } from './components/productos/producto-index/pr
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { ProductoCreateComponent } from './components/productos/producto-create/producto-create.component';
+import { ProductoEditComponent } from './components/productos/producto-edit/producto-edit.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ProductoCreateComponent } from './components/productos/producto-create/
     DashboardComponent,
     ProductoIndexComponent,
     SidebarComponent,
-    ProductoCreateComponent
+    ProductoCreateComponent,
+    ProductoEditComponent
   ],
   imports: [
     BrowserModule,

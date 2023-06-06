@@ -84,8 +84,8 @@
                                                 </button>
                                                 <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 31px, 0px);">
                                                     <a class="dropdown-item" [routerLink]="['/producto/registrar']">Registrar producto</a>
-                                                    <a class="dropdown-item">Ver categorias</a>
-                                                    <a class="dropdown-item">Registrar Categoria</a>
+                                                    <a class="dropdown-item" data-toggle="modal" data-target="#modal-data-categoria">Ver categorias</a>
+                                                    <a class="dropdown-item" data-toggle="modal" data-target="#modal-save-categoria">Registrar Categoria</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -109,7 +109,20 @@
                                         </td>
                                         <td>{{item.stock}}</td>
                                         <td><b>S/. </b>{{item.precio_venta}}</td>
-                                    
+                                        <td>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn mb-1 btn-secondary dropdown-toggle" data-toggle="dropdown"
+                                                aria-haspopup="true" aria-expanded="false">
+                                                <i class="fas fa-cog"></i>
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" [routerLink]="['/producto/editar/',item._id]">Editar Registro</a>
+                                                    <a class="dropdown-item">Ver categorias</a>
+                                                    <a class="dropdown-item">Registrar Categoria</a>
+                                                </div>
+                                            </div>
+
+                                        </td>
                                 </tbody>
                             </table>
                         </div>
@@ -121,7 +134,7 @@
     
                 <!--MODAL AGREGAR CATEGORIA-->
                 <div class="modal fade" id="modal-save-categoria" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
-                    <form>
+                    <form #categoriaForm="ngForm" (ngSubmit)="save_cat(categoriaForm)">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -131,7 +144,12 @@
                                     </button>
                                 </div>
                                 <div class="modal-body m-3">
-                                   
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Titulo de Categoría" #titulo_categoria="ngModel" name="titulo_cat" [(ngModel)]="titulo_cat" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea class="form-control" placeholder="Breve descripción" #descripcion_categoria="ngModel" name="descripcion_cat" [(ngModel)]="descripcion_cat" required></textarea>
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
@@ -154,7 +172,14 @@
                                 </button>
                             </div>
                             <div class="modal-body m-3">
-                               
+                               <table class="table table-striped table-hover table-sm">
+                                <thead>
+                                    <th>Titulo</th>
+                                </thead>
+                                <tbody *ngFor="let item of categorias">
+                                    <td>{{ item.titulo.toUpperCase() }}</td>
+                                </tbody>
+                               </table>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
