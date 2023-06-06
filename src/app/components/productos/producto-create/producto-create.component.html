@@ -16,7 +16,6 @@
                     </h1>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="dashboard-default.html">Dashboard</a></li>
                             <li class="breadcrumb-item"><a [routerLink]="['/productos']">Productos</a></li>
                             <li class="breadcrumb-item"><a>Registro de productos</a></li>
                         </ol>
@@ -48,8 +47,8 @@
                     <div class="col-12 col-xl-8">
                         <div class="card">
                             <div class="card-header">
-                                <h5 class="card-title">Complete el formulario</h5>
-                                <h6 class="card-subtitle text-muted">Productos.</h6>
+                                <h5 class="card-title">Complete el formulario para registrar</h5>
+                               <!-- <h6 class="card-subtitle text-muted">Productos</h6> -->
                             </div>
                             <div class="card-body">
                                 <form #productoForm="ngForm" (ngSubmit)="onSubmit(productoForm)">
@@ -63,7 +62,7 @@
                                         <div class="col-lg-2">
                                             <div class="form-group">
                                                 <label class="form-label">Precio compra</label>
-                                                <input type="number" class="form-control" placeholder="$0"  #precio_compra="ngModel" name="precio_compra" [(ngModel)]="producto.precio_compra" required>
+                                                <input type="number" class="form-control" placeholder="$0" #precio_compra="ngModel" name="precio_compra" [(ngModel)]="producto.precio_compra" required>
                                             </div>
                                         </div>
                                         <div class="col-lg-2">
@@ -116,8 +115,7 @@
                                     <div class="mt-2">
                                         <input class="btn btn-primary" required (change)="imgSelected($event)" type="file" style="width: 100% !important;">
                                     </div>
-                                    <small>For best results, use an image at least 128px by 128px in .jpg
-                                    format</small>
+                                    <small>Como recomendación, usar una imagen de al menos 128px X 128px en formato .jpg</small>
                                 </div>
                             </div>
                         </div>

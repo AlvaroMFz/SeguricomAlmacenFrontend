@@ -20,6 +20,14 @@
                       <span aria-hidden="true">x</span>
                     </button>
                   </div>
+                  <div *ngIf="data_error_vacio"  class="alert alert-danger alert alert-dismissible" role="alert">
+                    <div class="alert-message">
+                      {{data_error_vacio}}
+                    </div>
+                    <button type="button" (click)="close_alert()" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">x</span>
+                    </button>
+                  </div>
                   <div class="text-center">
                     <img
                       src="../../../assets/img/SeguricomLogo.jpg"
