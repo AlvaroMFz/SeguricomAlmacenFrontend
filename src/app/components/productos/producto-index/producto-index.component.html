@@ -96,6 +96,7 @@
                                 <thead class="thead-dark">
                                     <tr>
                                         <th>Producto</th>
+                                        <th>Categoría</th>
                                         <th>Cantidad</th>
                                         <th>Precio Venta</th>
                                         <th>Opciones</th>
@@ -107,6 +108,7 @@
                                             <img [src]="url + 'producto/img/'+ item.imagen" width="48" height="48" class="rounded-circle mr-2" 
                                             alt="Avatar"> {{item.titulo}}
                                         </td>
+                                        <td>{{item.idcategoria.titulo}}</td>
                                         <td>{{item.stock}}</td>
                                         <td><b>S/. </b>{{item.precio_venta}}</td>
                                         <td>
