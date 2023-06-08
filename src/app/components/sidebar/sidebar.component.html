@@ -36,7 +36,7 @@
                     </a>
                 </li>
 
-                <li class="sidebar-item">
+                <li class="sidebar-item" *ngIf="identity.role == 'ADMIN'" routerLinkActive="sidebar-item active">
                     <a class="sidebar-link" [routerLink]="['/usuarios']"  >
                         <i class="align-middle mr-2 fas fa-fw fas fa-users"></i> <span class="align-middle">Usuarios</span>
                     </a>
@@ -49,7 +49,7 @@
                 </li>
 
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="#ion-ios-pulse-strong">
+                    <a class="sidebar-link" [routerLink]="['']">
                         <i class="align-middle mr-2 fas fa-fw fa-sign-out-alt"></i> <span class="align-middle">Cerrar Sesión</span>
                     </a>
                 </li>

@@ -15,6 +15,9 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { ProductoCreateComponent } from './components/productos/producto-create/producto-create.component';
 import { ProductoEditComponent } from './components/productos/producto-edit/producto-edit.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { UserIndexComponent } from './components/users/user-index/user-index.component';
+import { UserCreateComponent } from './components/users/user-create/user-create.component';
+import { UserEditComponent } from './components/users/user-edit/user-edit.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +28,9 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     SidebarComponent,
     ProductoCreateComponent,
     ProductoEditComponent,
+    UserIndexComponent,
+    UserCreateComponent,
+    UserEditComponent,
   ],
   imports: [
     BrowserModule,
