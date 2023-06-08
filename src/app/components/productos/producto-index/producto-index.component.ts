@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { ProductoService } from 'src/app/services/producto.service';
 import { GLOBAL } from 'src/app/services/global'
 import Swal from 'sweetalert2';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 declare var jQuery:any;
 declare var $:any;
 @Component({
   selector: 'app-producto-index',
   templateUrl: './producto-index.component.html',
-  styleUrls: ['./producto-index.component.css']
+  styleUrls: ['./producto-index.component.css'],
 })
 export class ProductoIndexComponent implements OnInit {
 
@@ -18,6 +19,10 @@ export class ProductoIndexComponent implements OnInit {
   public categorias:any;
   public titulo_cat:any;
   public descripcion_cat:any;
+  public p: number = 1;
+  public producto_stock: any;
+  public producto_id:any;
+  public success_message:any;
 
   constructor(
     private _productoService : ProductoService,
@@ -80,6 +85,86 @@ export class ProductoIndexComponent implements OnInit {
       );
     }else{
 
+    }
+  }
+
+  eliminar(id:any){
+    Swal.fire({
+      title: 'Estas seguro de elimarlo?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminarlo !',
+      cancelButtonText: 'No, cancelar !',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Producto eliminado',
+          'Se eliminó correctamente',
+          'success'
+        )
+
+        this._productoService.delete_producto(id).subscribe(
+          response => {
+            this._productoService.get_productos('').subscribe(
+              response => {
+                this.productos = response.productos;
+              },
+              error => {
+
+              }
+            );
+          },
+          error => {
+
+          }
+        );
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        Swal.fire(
+          'Cancelado',
+          'Se canceló la solicitud',
+          'error'
+        )
+      }
+    }) 
+  }
+
+  get_id(id:any){
+    this.producto_id = id;
+  }
+
+  close_alert(){
+    this.success_message = '';
+  }
+
+  aumentar_stock(stockForm:any) {
+    if(stockForm.valid){
+      if(this.producto_id){
+        this._productoService.stock_producto({
+          _id: this.producto_id,
+          stock: stockForm.value.producto_stock,
+        }).subscribe(
+          response => {
+            this.success_message = 'Se aumentó el stock correctamente';
+            this._productoService.get_productos('').subscribe(
+              response => {
+                this.productos = response.productos;
+                $('.modal').modal('hide');
+              },
+              error => {
+                
+              }
+            );
+          },
+          error => {
+
+          }
+        );
+      }
+      
     }
   }
 
