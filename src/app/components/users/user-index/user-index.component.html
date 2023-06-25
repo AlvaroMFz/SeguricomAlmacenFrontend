@@ -52,7 +52,8 @@
                                                 </button>
                                                 <div class="dropdown-menu">
                                                     <a class="dropdown-item" [routerLink]="['/usuario/editar/',item._id]" >Editar registro</a>
-                                                   
+                                                    <a class="dropdown-item" (click)="eliminar(item._id)" type="button"
+                                                    >Eliminar Registro</a>
                                                     <!--<a class="dropdown-item" (click)="eliminar(item._id)">Eliminar registro</a>
                                                     -->
                                                 </div>
